@@ -1,0 +1,34 @@
+﻿@model List<MVCNewModel.Context.tb_customer>
+
+@{
+    ViewBag.Title = "ListCustomer";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>First_Name</th>
+        <th>Last_Name</th>
+        <th>Country</th>
+        <th>Email</th>
+        <th>PhoneNo</th>
+        <th>Created_date</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+         <tr>
+             <td>@item.First_Name</td>
+             <td>@item.Last_Name</td>
+             <td>@item.Country</td>
+             <td>@item.Email</td>
+             <td>@item.PhoneNo</td>
+             <td>@item.Created_date</td>
+             <td>
+                 <a href="@Url.Action("Customer", new {item.Customer_Id,item.First_Name,item.Last_Name,item.Country,item.Email,item.PhoneNo,item.Created_date})" class=" btn btn-success">Edit</a>
+                 <a href="@Url.Action("Delete", new {item.Customer_Id})" class=" btn btn-danger">Delete</a>
+             </td>
+         </tr>
+    }
+</table>
+
